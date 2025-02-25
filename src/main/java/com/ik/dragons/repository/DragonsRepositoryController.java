@@ -16,6 +16,8 @@ public class DragonsRepositoryController implements IDragonsRepository {
 
     @Override
     public Rocket addNewRocket(String name) {
+        if (rockets.keySet().stream().anyMatch(r -> r.name().equals(name)))
+            return null;
         var rocket = new Rocket(name);
         rockets.put(rocket, RocketStatus.ON_GROUND);
         return rocket;
@@ -23,6 +25,8 @@ public class DragonsRepositoryController implements IDragonsRepository {
 
     @Override
     public Mission addNewMission(String name) {
+        if (missions.keySet().stream().anyMatch(m -> m.name().equals(name)))
+            return null;
         var mission = new Mission(name);
         missions.put(mission, MissionStatus.SCHEDULED);
         return mission;
