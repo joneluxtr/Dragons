@@ -6,6 +6,7 @@ import com.ik.dragons.repository.entity.Rocket;
 import com.ik.dragons.repository.entity.RocketStatus;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DragonsRepositoryController implements IDragonsRepository {
@@ -38,6 +39,16 @@ public class DragonsRepositoryController implements IDragonsRepository {
 
     public MissionStatus getMissionStatus(Mission mission) {
         return missions.get(mission);
+    }
+
+    @Override
+    public void addRocketToMission(Rocket rocket, Mission mission) {
+
+    }
+
+    @Override
+    public List<Rocket> getMissionRockets(Mission mission) {
+        return List.of();
     }
 
 }

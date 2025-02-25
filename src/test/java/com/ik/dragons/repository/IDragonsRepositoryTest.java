@@ -1,12 +1,14 @@
 package com.ik.dragons.repository;
 
+import com.ik.dragons.repository.entity.Rocket;
 import com.ik.dragons.repository.entity.RocketStatus;
 import com.ik.dragons.repository.entity.MissionStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class IDragonsRepositoryTest {
 
@@ -59,6 +61,16 @@ class IDragonsRepositoryTest {
         var mission = dragons.addNewMission("Transit");
         var duplicateMission = dragons.addNewMission("Transit");
         assertNull(duplicateMission);
+    }
+
+    @Test
+    void testAddRocketToMission() {
+        var rocket = dragons.addNewRocket("Red Dragon");
+        var mission = dragons.addNewMission("Transit");
+        dragons.addRocketToMission(rocket, mission);
+        List<Rocket> rockets = dragons.getMissionRockets(mission);
+        assertEquals(1, rockets.size());
+        assertTrue(rockets.contains(rocket));
     }
 
 }

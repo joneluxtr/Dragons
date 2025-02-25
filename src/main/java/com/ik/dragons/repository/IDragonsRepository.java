@@ -5,6 +5,8 @@ import com.ik.dragons.repository.entity.MissionStatus;
 import com.ik.dragons.repository.entity.Rocket;
 import com.ik.dragons.repository.entity.RocketStatus;
 
+import java.util.List;
+
 public interface IDragonsRepository {
 
     Rocket addNewRocket(String name);
@@ -12,5 +14,9 @@ public interface IDragonsRepository {
 
     RocketStatus getRocketStatus(Rocket rocket);
     MissionStatus getMissionStatus(Mission mission);
+
+    void addRocketToMission(Rocket rocket, Mission mission);
+    List<Rocket> getMissionRockets(Mission mission);
+
 
 }
