@@ -6,9 +6,7 @@ import com.ik.dragons.repository.entity.MissionStatus;
 import com.ik.dragons.repository.entity.Rocket;
 import com.ik.dragons.repository.entity.RocketStatus;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class DragonsRepositoryController implements IDragonsRepository {
@@ -128,6 +126,35 @@ public class DragonsRepositoryController implements IDragonsRepository {
             throw new AssignmentException("Mission cannot be 'Ended' while rockets are still assigned");
         }
         missions.put(mission, MissionStatus.ENDED);
+    }
+
+    public Map<Mission, List<Rocket>> getAllMissions() {
+        Map<Mission, List<Rocket>> result = new HashMap<>();
+        for (Mission mission : missions.keySet()) {
+            result.putIfAbsent(mission, new ArrayList<>());
+            for (Map.Entry<Rocket, Mission> entry : assignments.entrySet()) {
+                Rocket rocket = entry.getKey();
+                Mission assignedMission = entry.getValue();
+                if (assignedMission.equals(mission)) {
+                    result.get(mission).add(rocket);
+                }
+            }
+        }
+        return result.entrySet()
+                .stream()
+                .sorted((entry1, entry2) -> {
+                    int sizeComparison = Integer.compare(entry2.getValue().size(), entry1.getValue().size());
+                    if (sizeComparison == 0) {
+                        return entry2.getKey().toString().compareTo(entry1.getKey().toString());
+                    }
+                    return sizeComparison;
+                })
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (e1, e2) -> e1,
+                        LinkedHashMap::new
+                ));
     }
 
 }
