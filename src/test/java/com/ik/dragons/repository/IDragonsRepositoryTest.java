@@ -73,4 +73,13 @@ class IDragonsRepositoryTest {
         assertTrue(rockets.contains(rocket));
     }
 
+    @Test
+    void removeRocketFromMission() {
+        var rocket = dragons.addNewRocket("Red Dragon");
+        var mission = dragons.addNewMission("Transit");
+        dragons.addRocketToMission(rocket, mission);
+        dragons.getMissionRockets(mission).contains(rocket);
+        dragons.removeRocketFromMission(rocket);
+        assertFalse(dragons.getMissionRockets(mission).contains(rocket));
+    }
 }

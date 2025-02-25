@@ -21,4 +21,6 @@ public interface IDragonsRepository {
     void changeRocketStatus(Rocket rocket, RocketStatus status);
     void changeMissionStatus(Mission mission, MissionStatus status);
 
+    void removeRocketFromMission(Rocket rocket);
+
 }

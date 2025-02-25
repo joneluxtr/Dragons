@@ -59,6 +59,8 @@ public class DragonsRepositoryController implements IDragonsRepository {
                 .collect(Collectors.toList());
     }
 
+
+
     @Override
     public void changeRocketStatus(Rocket rocket, RocketStatus status) {
         if (status.equals(RocketStatus.ON_GROUND)) {
@@ -89,6 +91,11 @@ public class DragonsRepositoryController implements IDragonsRepository {
                 handleMissionEndedStatus(mission);
                 break;
         }
+    }
+
+    @Override
+    public void removeRocketFromMission(Rocket rocket) {
+
     }
 
     private void handleMissionPendingStatus(Mission mission) {
