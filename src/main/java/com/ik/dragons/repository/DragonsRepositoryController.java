@@ -8,12 +8,13 @@ import com.ik.dragons.repository.entity.RocketStatus;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class DragonsRepositoryController implements IDragonsRepository {
 
     private final Map<Rocket, RocketStatus> rockets = new HashMap();
     private final Map<Mission, MissionStatus> missions = new HashMap();
-
+    private final Map<Rocket, Mission> assignments = new HashMap();
 
     @Override
     public Rocket addNewRocket(String name) {
@@ -43,12 +44,15 @@ public class DragonsRepositoryController implements IDragonsRepository {
 
     @Override
     public void addRocketToMission(Rocket rocket, Mission mission) {
-
+        assignments.put(rocket, mission);
     }
 
     @Override
     public List<Rocket> getMissionRockets(Mission mission) {
-        return List.of();
+        return assignments.entrySet().stream()
+                .filter(entry -> entry.getValue().equals(mission))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
 }
