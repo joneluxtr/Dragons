@@ -1,0 +1,16 @@
+package com.ik.dragons.repository;
+
+import com.ik.dragons.repository.entity.Mission;
+import com.ik.dragons.repository.entity.MissionStatus;
+import com.ik.dragons.repository.entity.Rocket;
+import com.ik.dragons.repository.entity.RocketStatus;
+
+public interface IDragonsRepository {
+
+    Rocket addNewRocket(String name);
+    Mission addNewMission(String name);
+
+    RocketStatus getRocketStatus(Rocket rocket);
+    MissionStatus getMissionStatus(Mission mission);
+
+}
