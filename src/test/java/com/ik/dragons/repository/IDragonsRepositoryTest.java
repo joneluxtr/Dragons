@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class IDragonsRepositoryTest {
 
@@ -28,6 +29,36 @@ class IDragonsRepositoryTest {
         var mission = dragons.addNewMission("Transit");
         assertEquals("Transit", mission.name());
         assertEquals(MissionStatus.SCHEDULED, dragons.getMissionStatus(mission));
+    }
+
+    @Test
+    public void testCreateFewRockets() {
+        var rocket1 = dragons.addNewRocket("Red Dragon 1");
+        var rocket2 = dragons.addNewRocket("Red Dragon 2");
+        assertEquals("Red Dragon 1", rocket1.name());
+        assertEquals("Red Dragon 2", rocket2.name());
+    }
+
+    @Test
+    public void testCreateFewMissions() {
+        var mission1 = dragons.addNewMission("Transit 1");
+        var mission2 = dragons.addNewMission("Transit 2");
+        assertEquals("Transit 1", mission1.name());
+        assertEquals("Transit 2", mission2.name());
+    }
+
+    @Test
+    public void testDuplicateNewRocket() {
+        var rocket = dragons.addNewRocket("Red Dragon");
+        var duplicateRocket = dragons.addNewRocket("Red Dragon");
+        assertNull(duplicateRocket);
+    }
+
+    @Test
+    public void testDuplicateNewMission() {
+        var mission = dragons.addNewMission("Transit");
+        var duplicateMission = dragons.addNewMission("Transit");
+        assertNull(duplicateMission);
     }
 
 }
