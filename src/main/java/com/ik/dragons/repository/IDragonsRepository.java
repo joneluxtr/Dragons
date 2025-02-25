@@ -18,5 +18,7 @@ public interface IDragonsRepository {
     void addRocketToMission(Rocket rocket, Mission mission);
     List<Rocket> getMissionRockets(Mission mission);
 
+    void changeRocketStatus(Rocket rocket, RocketStatus status);
+    void changeMissionStatus(Mission mission, MissionStatus status);
 
 }

@@ -55,4 +55,14 @@ public class DragonsRepositoryController implements IDragonsRepository {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public void changeRocketStatus(Rocket rocket, RocketStatus status) {
+
+    }
+
+    @Override
+    public void changeMissionStatus(Mission mission, MissionStatus status) {
+
+    }
+
 }

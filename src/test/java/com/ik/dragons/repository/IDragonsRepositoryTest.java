@@ -73,4 +73,17 @@ class IDragonsRepositoryTest {
         assertTrue(rockets.contains(rocket));
     }
 
+    @Test
+    void changeRocketStatus() {
+        var rocket = dragons.addNewRocket("Red Dragon");
+        dragons.changeRocketStatus(rocket, RocketStatus.IN_SPACE);
+        assertEquals(RocketStatus.IN_SPACE, dragons.getRocketStatus(rocket));
+    }
+
+    @Test
+    void changeMissionStatus() {
+        var mission = dragons.addNewMission("Transit");
+        dragons.changeMissionStatus(mission, MissionStatus.IN_PROGRESS);
+        assertEquals(MissionStatus.IN_PROGRESS, dragons.getMissionStatus(mission));
+    }
 }
