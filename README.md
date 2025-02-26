@@ -22,7 +22,9 @@ If you want to use the project just as library (i.e., no main method), you can u
 1. In the specification, mission `Luna 1` has a status of `Pending`, but all rockets are listed as `On ground`, which conflicts with the requirement that at least one rocket should be `In repair`.  
    I made the rocket `Dragons2` in repair to pass all validations in the code.
 2. The project contains a few tech debts that need to be fixed due to time limitations:
-   2.1. Enums should have values. For instance, `MissionStatus.IN_PROGRESS` should be `'In progress'`, etc.  
-   2.2. Implement independent classes for validators. Now, all validators are private methods in `DragonsRepositoryController`.
-   2.3. `DragonsMain` is only for example how to use library in third projects.
+
+   
+   2.1. Enums should have values. For instance, `MissionStatus.IN_PROGRESS` should be `'In progress'`, etc.  <br>
+   2.2. Implement independent classes for validators. Now, all validators are private methods in `DragonsRepositoryController`. <br>
+   2.3. `DragonsMain` is only for example how to use library in third projects. <br>
 
